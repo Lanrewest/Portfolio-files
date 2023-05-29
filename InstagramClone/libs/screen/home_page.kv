@@ -1,0 +1,38 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#: import StoryCreator libs.component.story_creator.StoryCreator
+
+<HomePage>:
+    md_bg_color: get_color_from_hex("#FFFFFF")
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        # Appbar#
+        AppBar:
+
+        MDBoxLayout:
+            ScrollView:
+                bar_width: 0
+
+                MDBoxLayout:
+                    adaptive_height: True
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        adaptive_height: True
+                        id: timeline
+
+                        # Stories
+                        ScrollView:
+                            size_hint_y: None
+                            height: 110
+                            bar_width: 0
+                            
+
+                            MDBoxLayout:
+                                adaptive_width: True
+                                spacing: 5
+                                padding: 5
+
+                                StoryCreator:
+                                    avatar:root.profile_picture
+                               
