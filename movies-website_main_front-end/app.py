@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 import json
 import urllib.request as request
 import ssl
@@ -15,7 +15,8 @@ def home():
     ssl._create_default_https_context = ssl._create_unverified_context
     conn = request.urlopen(base_url)
     json_data = json.loads(conn.read())
-    return render_template("base.html", data=json_data["results"])
+    background_url = url_for('static', filename='backg.jpg')
+    return render_template("base.html", background_url=background_url, data=json_data["results"])
 
 
 # @app.route("/")
@@ -38,4 +39,4 @@ def about():
 
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(port=8000)
